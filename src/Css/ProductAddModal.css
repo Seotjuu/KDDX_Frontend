@@ -1,0 +1,16 @@
+/* 상품 재고 관리 Modal */
+
+.ModalData{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ModalData div{
+    padding: 20px;
+    margin-right: 30%;
+}
+
+.ModalData input{
+    float: right;
+}
