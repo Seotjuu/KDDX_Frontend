@@ -1,5 +1,6 @@
+# Test
 # KDDX_Frontend
-React.js ( Visual Studio Code ) test 용
+React.js ( Visual Studio Code )
 
 ## 프로젝트 실행 가이드
 
