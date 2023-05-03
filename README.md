@@ -31,7 +31,7 @@ d3, bootstrap, fortawesome, axios
 
 ### Axios backend data handling to Django
 
-- Axios :
-    get  : 데이터 조회
-    post : 데이터 전송
-    put  : 데이터 수정
+#### Axios :
+-   get  : 데이터 조회
+-   post : 데이터 전송
+-   put  : 데이터 수정
