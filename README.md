@@ -1,11 +1,14 @@
 # KDDX_Frontend
-React.js ( Visual Studio Code )
+React.js ( Visual Studio Code ) test 용
 
 ## 프로젝트 실행 가이드
 
+
+#### 프로젝트 소스코드 다운로드
 ```
 git clone https://github.com/Seotjuu/KDDX_Frontend.git
 ```
+
 
 ```
 npx create-react-app KDDX_Frontend ( 프로젝트 이름 )
