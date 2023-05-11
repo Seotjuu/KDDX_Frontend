@@ -21,12 +21,18 @@ export default function LineChart() {
 
     // x, y 축 설정
     const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-    const width = 1000;
-    const height = 500;
+    const width = 1500;
+    const height = 300;
 
-    const x = d3.scaleLinear().range([0, width]).domain([0, 50]);
+    const x = d3
+      .scaleLinear()
+      .range([0, width+200])
+      .domain([0, 50]);
 
-    const y = d3.scaleLinear().range([height, 0]).domain([0, 100]);
+    const y = d3
+      .scaleLinear()
+      .range([height, 0])
+      .domain([0, d3.max(data)]);
 
     const line = d3
       .line()
@@ -35,15 +41,18 @@ export default function LineChart() {
       .curve(d3.curveLinear);
 
     // 표식 설정
-    const symbol = d3.symbol().type(d3.symbolCircle).size(50);
+    const symbol = d3
+      .symbol()
+      .type(d3.symbolCircle)
+      .size(70);
 
     // svg 요소 생성
     const svg = d3
       .select(chartRef.current)
       .html("") // 기존 요소 삭제
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width + margin.left + margin.right + 200)
+      .attr("height", height + margin.top + margin.bottom + 200)
       .append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -64,16 +73,18 @@ export default function LineChart() {
       .append("path")
       .attr("class", "dot")
       .attr("transform", (d, i) => `translate(${x(i)},${y(d)})`)
-      .attr("d", symbol);
+      .attr("d", symbol)
+      .attr("stroke", "white")
+      .attr("stroke-width", 2);
 
     // x 축 생성
     svg
       .append("g")
       .attr("transform", `translate(0, ${height})`)
-      .call(d3.axisBottom(x).tickFormat((d, i) => labelTexts[i])) // x축 단위
+      .call(d3.axisBottom(x).tickFormat((d, i) => labelTexts[i]).ticks(50)) // x축 단위
       .selectAll("text")
-      .style("text-anchor", "large")
-      .attr("transform", "translate(0, 0) rotate(-90)");
+      .style("text-anchor", "start")
+      .attr("transform", "translate(13, 10) rotate(90)");
 
     // y 축 생성
     svg.append("g").call(d3.axisLeft(y));
@@ -86,7 +97,7 @@ export default function LineChart() {
       </div>
       <div
         ref={chartRef}
-        style={{ width: "800px", height: "700px", overflowX: "scroll" }}
+        style={{ width: "500px", height: "500px", overflowX: "scroll" }}
       ></div>
     </div>
   );
