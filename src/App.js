@@ -5,10 +5,11 @@ import React from "react";
 import ProTable from "./Component/ProTable";
 import Title from "./Component/Title";
 import ButtonEvent from "./Component/ButtonEvent";
-import LineChart from "./Component/Graph/LineChart";
-import BarChart from "./Component/Graph/BarChart";
-import LineChartVer2 from "./Component/Graph/LineChartVer2";
-import BarChartVer2 from "./Component/Graph/BarChartVer2";
+import LineChart from "./Component/ChartTest/LineChart";
+import BarChart from "./Component/ChartTest/BarChart";
+import LineChartVer2 from "./Component/ChartTest/LineChartVer2";
+import BarChartVer2 from "./Component/ChartTest/BarChartVer2";
+import Chart from "./Component/Graph/Chart";
 
 // import CSS
 import "./Css/ProTable.css";
@@ -27,6 +28,8 @@ export default function App() {
           <BarChart />
           <LineChartVer2 />
           <BarChartVer2 />
+
+          <Chart />
         </div>
       </div>
     </div>

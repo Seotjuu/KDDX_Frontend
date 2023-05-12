@@ -1,9 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
+import Legend from "../Graph/Legend";
 
 export default function LineChartVer2() {
   const chartRef = useRef(null);
 
+  // 랜덤 숫자 50개 생성
   const randomData = () =>{
       const data = Array.from({ length: 50 }, () =>
         Math.floor(Math.random() * 100)
@@ -26,38 +28,55 @@ export default function LineChartVer2() {
     return labelText;
   }
 
+  
+  // 범례 데이터
+  const AllData = [
+    {
+      data: randomData(),
+      name : "dataA",
+      color : "red"
+    },
+
+    {
+    data: randomData(),
+    name : "dataB",
+    color : "orange"
+    },
+
+    {
+    data: randomData(),
+    name : "dataC",
+    color : "yellow"
+    },
+
+    {
+    data: randomData(),
+    name : "dataD",
+    color : "green"
+    },
+
+    {
+    data: randomData(),
+    name : "dataE",
+    color : "blue"
+    },
+
+    {
+    data: randomData(),
+    name : "dataF",
+    color : "pink"
+    }
+  ]
+
+  const MaxData = AllData.map((arr, idx)=>{
+    return d3.max(arr.data);
+  })
+
   useEffect(() => {
-    LineChartVer2();
+    LineChart();
   }, []);
 
-  const LineChartVer2 = () => {
-    // 랜덤 숫자 50개 생성
-    const dataA = {
-      data: randomData(),
-      color : "red"};
-
-    const dataB = {
-      data: randomData(),
-      color : "orange"};
-
-    const dataC = {
-      data: randomData(),
-      color : "yellow"};
-
-    const dataD = {
-      data: randomData(),
-      color : "green"};
-
-    const dataE = {
-      data: randomData(),
-      color : "blue"};
-
-    const dataF = {
-      data: randomData(),
-      color : "pink"};
-
-    const AllData = [dataA.data, dataB.data, dataC.data, dataD.data, dataE.data, dataF.data]
-
+  const LineChart = () => {
     const labelTexts = randomText();
 
     // x, y 축 설정
@@ -73,7 +92,7 @@ export default function LineChartVer2() {
     const y = d3
       .scaleLinear()
       .range([height, 0])
-      .domain([0, d3.max(d3.max(AllData))]);
+      .domain([0, d3.max(MaxData)]);
 
     const line = d3
       .line()
@@ -122,12 +141,9 @@ export default function LineChartVer2() {
       .attr("stroke-width", 2);
     };
 
-    GraphLine(dataA.data, dataA.color);
-    GraphLine(dataB.data, dataB.color);
-    GraphLine(dataC.data, dataC.color);
-    GraphLine(dataD.data, dataD.color);
-    GraphLine(dataE.data, dataE.color);
-    GraphLine(dataF.data, dataF.color);
+    AllData.map((val, idx)=>{
+      GraphLine(val.data, val.color);
+    })
 
     // x 축 생성
     svg
@@ -139,7 +155,8 @@ export default function LineChartVer2() {
       .attr("transform", "translate(13, 10) rotate(90)");
 
     // y 축 생성
-    svg.append("g").call(d3.axisLeft(y));
+    svg.append("g").call(d3.axisLeft(y));      
+
   };
 
   return (
@@ -151,6 +168,8 @@ export default function LineChartVer2() {
         ref={chartRef}
         style={{ width: "500px", height: "500px", overflowX: "scroll" }}
       ></div>
+
+      <Legend value={AllData}/>
     </div>
   );
 }
