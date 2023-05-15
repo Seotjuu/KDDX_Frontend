@@ -21,14 +21,14 @@ export default function BarChart() {
 
     // x, y 축 설정
     const margin = { top: 20, right: 20, bottom: 30, left: 40 };  // margin 설정
-    const width = 1500; // 넓이 설정
+    const width = 2000; // 넓이 설정
     const height = 300; // 높이 설정
 
     const x = d3
       .scaleBand() // x축
       .range([0, width + 200]) // 범위
       .domain(data.map((d, i) => i.toString())) // x축 
-      .padding(0.1);  // 그래프 두께
+      .padding(0.3);  // 그래프 두께
 
     const y = d3
       .scaleLinear() // y축

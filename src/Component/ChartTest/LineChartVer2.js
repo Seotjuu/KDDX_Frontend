@@ -164,12 +164,14 @@ export default function LineChartVer2() {
       <div>
         <h3>Line Chart ver.2</h3>
       </div>
-      <div
-        ref={chartRef}
-        style={{ width: "500px", height: "500px", overflowX: "scroll" }}
-      ></div>
+      <div style={{ display: "flex", width: "800px" }}>
+        <div
+          ref={chartRef}
+          style={{ width: "500px", height: "500px", overflowX: "scroll" }}
+        ></div>
 
-      <Legend value={AllData}/>
+        <Legend value={AllData}/>
+      </div>
     </div>
   );
 }

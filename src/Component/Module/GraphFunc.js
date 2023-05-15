@@ -1,6 +1,6 @@
 // random Data 50개
 const randomData = () =>{
-    const data = Array.from({ length: 50 }, () =>
+    const data = Array.from({ length: 8 }, () =>
       Math.floor(Math.random() * 100)
     );
 
@@ -10,7 +10,7 @@ const randomData = () =>{
 // random text data 30글자 50개 
 const randomText = () => {
   const labelText =
-  Array.from({ length: 50 }, () => {
+  Array.from({ length: 8 }, () => {
     let text = "";
     for (let i = 0; i < 30; i++) {
       // 글자 수
